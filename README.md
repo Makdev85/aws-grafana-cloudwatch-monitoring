@@ -67,7 +67,7 @@ Before starting, make sure you have:
 
 **Screenshot**
 
-`01-ec2-instance.png`
+`screenshots/01-ec2-instance.png`
 
 ---
 
@@ -81,7 +81,7 @@ Before starting, make sure you have:
 
 **Screenshot**
 
-`02-iam-user.png`
+`screenshots/02-iam-user.png`
 
 ---
 
@@ -93,7 +93,7 @@ Before starting, make sure you have:
 
 **Screenshot**
 
-`03-cloudwatch-metrics.png`
+`screenshots/03-cloudwatch-metrics.png`
 
 ---
 
@@ -106,7 +106,7 @@ Before starting, make sure you have:
 
 **Screenshot**
 
-`04-grafana-dashboard.png`
+`screenshots/04-grafana-dashboard.png`
 
 ---
 
@@ -121,7 +121,7 @@ Create a Grafana-managed alert with the following configuration:
 
 **Screenshot**
 
-`05-cpu-alert-rule.png`
+`screenshots/05-cpu-alert-rule.png`
 
 ---
 
@@ -140,7 +140,7 @@ Verify that the alert status changes to **Firing**.
 
 **Screenshot**
 
-`06-alert-firing.png`
+`screenshots/06-alert-firing.png`
 
 ---
 
@@ -150,7 +150,7 @@ Once the alert enters the **Firing** state, Grafana sends an email notification 
 
 **Screenshot**
 
-`07-email-notification.png`
+`screenshots/07-email-notification.png`
 
 ---
 
