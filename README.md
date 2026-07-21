@@ -136,14 +136,6 @@ sudo yum install stress -y
 stress --cpu 2 --timeout 300
 ```
 
-Ubuntu
-
-```bash
-sudo apt update
-sudo apt install stress -y
-stress --cpu 2 --timeout 300
-```
-
 Verify that the alert status changes to **Firing**.
 
 **Screenshot**
