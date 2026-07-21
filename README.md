@@ -52,7 +52,7 @@ Before starting, make sure you have:
 - AWS Account
 - Running EC2 Instance
 - Grafana Cloud Account
-- IAM User with CloudWatch permissions
+- IAM User with CloudWatch and EC2 permissions
 
 ---
 
@@ -60,85 +60,59 @@ Before starting, make sure you have:
 
 ## Step 1: Launch an EC2 Instance
 
-- Launch an EC2 instance.
+- Launch an Amazon EC2 instance.
 - Choose Amazon Linux 2023 or Ubuntu.
-- Configure Security Groups.
+- Configure the Security Group.
 - Verify the instance is in the **Running** state.
 
 **Screenshot**
 
-`screenshots/01-ec2-instance.png`
+`01-ec2-instance.png`
 
 ---
 
 ## Step 2: Create an IAM User
 
-- Open AWS IAM.
-- Create a new IAM User.
-- Attach the following policies:
+- Create an IAM user.
+- Attach the following AWS managed policies:
   - CloudWatchFullAccess
   - AmazonEC2FullAccess
 - Generate an Access Key and Secret Access Key.
 
 **Screenshot**
 
-`screenshots/02-iam-user.png`
+`02-iam-user.png`
 
 ---
 
-## Step 3: Configure Grafana Cloud
+## Step 3: Verify CloudWatch Metrics
+
+- Open Amazon CloudWatch.
+- Navigate to **Metrics → EC2 → Per-Instance Metrics**.
+- Verify that EC2 metrics are being collected.
+
+**Screenshot**
+
+`03-cloudwatch-metrics.png`
+
+---
+
+## Step 4: Create a Grafana Dashboard
 
 - Log in to Grafana Cloud.
-- Navigate to **Connections → Data Sources**.
-- Add **Amazon CloudWatch**.
-- Enter:
-  - Access Key
-  - Secret Access Key
-  - Default Region
-- Click **Save & Test**.
+- Configure Amazon CloudWatch as the data source.
+- Create a dashboard.
+- Add the **CPUUtilization** metric for the EC2 instance.
 
 **Screenshot**
 
-`screenshots/03-cloudwatch-datasource.png`
+`04-grafana-dashboard.png`
 
 ---
 
-## Step 4: Create an EC2 Monitoring Dashboard
+## Step 5: Configure a CPU Alert Rule
 
-- Create a new dashboard.
-- Add a visualization.
-- Select:
-  - Namespace: **AWS/EC2**
-  - Metric: **CPUUtilization**
-  - Statistic: **Maximum**
-  - Dimension: **InstanceId**
-
-**Screenshot**
-
-`screenshots/04-dashboard.png`
-
----
-
-## Step 5: Monitor EC2 Metrics
-
-The dashboard displays:
-
-- CPU Utilization
-- Network In
-- Network Out
-- Status Checks
-
-**Screenshot**
-
-`screenshots/05-cpu-metrics.png`
-
----
-
-## Step 6: Configure Alert Rule
-
-Create a Grafana-managed alert.
-
-Configuration:
+Create a Grafana-managed alert with the following configuration:
 
 - Metric: CPUUtilization
 - Threshold: Greater than **80%**
@@ -147,19 +121,11 @@ Configuration:
 
 **Screenshot**
 
-`screenshots/06-alert-rule.png`
+`05-cpu-alert-rule.png`
 
 ---
 
-## Step 7: Configure Email Notifications
-
-- Create an Email Contact Point.
-- Configure the Notification Policy.
-- Test the Email Contact Point.
-
----
-
-## Step 8: Test the Alert
+## Step 6: Verify Alert Status
 
 Generate CPU load on the EC2 instance.
 
@@ -178,41 +144,90 @@ sudo apt install stress -y
 stress --cpu 2 --timeout 300
 ```
 
-Verify:
+Verify that the alert status changes to **Firing**.
 
-- Alert Status changes to **Firing**
-- Email notification is received successfully.
+**Screenshot**
 
-**Screenshots**
+`06-alert-firing.png`
 
-`screenshots/07-alert-firing.png`
+---
 
-`screenshots/08-email-notification.png`
+## Step 7: Verify Email Notification
+
+Once the alert enters the **Firing** state, Grafana sends an email notification to the configured contact point.
+
+**Screenshot**
+
+`07-email-notification.png`
 
 ---
 
 # 📸 Project Screenshots
 
-| Screenshot | Description |
-|------------|-------------|
-| 01 | EC2 Instance |
-| 02 | IAM User |
-| 03 | CloudWatch Data Source |
-| 04 | Grafana Dashboard |
-| 05 | EC2 Metrics |
-| 06 | Alert Rule |
-| 07 | Alert Firing |
-| 08 | Email Notification |
+### 1. EC2 Instance
+
+*Launched an Amazon EC2 instance to serve as the infrastructure for monitoring.*
+
+`01-ec2-instance.png`
+
+---
+
+### 2. IAM User
+
+*Created an IAM user with the required permissions to securely connect Grafana Cloud to AWS CloudWatch.*
+
+`02-iam-user.png`
+
+---
+
+### 3. CloudWatch Metrics
+
+*Verified that Amazon CloudWatch was collecting performance metrics for the EC2 instance.*
+
+`03-cloudwatch-metrics.png`
+
+---
+
+### 4. Grafana Dashboard
+
+*Created a Grafana dashboard to visualize EC2 CPU utilization in real time.*
+
+`04-grafana-dashboard.png`
+
+---
+
+### 5. CPU Alert Rule
+
+*Configured a Grafana alert rule to trigger when EC2 CPU utilization exceeded 80%.*
+
+`05-cpu-alert-rule.png`
+
+---
+
+### 6. Alert Firing
+
+*Verified that the alert entered the **Firing** state after the CPU utilization crossed the configured threshold.*
+
+`06-alert-firing.png`
+
+---
+
+### 7. Email Notification
+
+*Received an email notification from Grafana confirming that the alert was successfully triggered.*
+
+`07-email-notification.png`
 
 ---
 
 # ✅ Results
 
 - Successfully connected Grafana Cloud to Amazon CloudWatch.
-- Created a real-time EC2 monitoring dashboard.
+- Verified CloudWatch metrics collection.
+- Created a real-time Grafana dashboard.
 - Configured CPU utilization alerts.
-- Verified email notifications on threshold breach.
-- Built a complete cloud monitoring workflow.
+- Successfully triggered the alert.
+- Received email notifications from Grafana.
 
 ---
 
@@ -232,7 +247,7 @@ Verify:
 
 # 📚 Conclusion
 
-This project demonstrates how to build a cloud monitoring and alerting solution using AWS CloudWatch and Grafana Cloud. The solution provides real-time infrastructure monitoring and automated email notifications for performance events, making it suitable for production monitoring and DevOps workflows.
+This project demonstrates how to build a cloud monitoring and alerting solution using Amazon CloudWatch and Grafana Cloud. It provides real-time infrastructure monitoring, dashboard visualization, and automated email notifications for performance events.
 
 ---
 
