@@ -8,7 +8,7 @@ This project demonstrates how to monitor an Amazon EC2 instance using **Amazon C
 
 # 🏗️ Architecture
 
-```
+```text
                     +----------------------+
                     |    Amazon EC2        |
                     +----------+-----------+
@@ -67,7 +67,7 @@ Before starting, make sure you have:
 
 **Screenshot**
 
-`screenshots/01-ec2-instance.png`
+![EC2 Instance](screenshots/01-ec2-instance.png)
 
 ---
 
@@ -81,7 +81,7 @@ Before starting, make sure you have:
 
 **Screenshot**
 
-`screenshots/02-iam-user.png`
+![IAM User](screenshots/02-iam-user.png)
 
 ---
 
@@ -93,7 +93,7 @@ Before starting, make sure you have:
 
 **Screenshot**
 
-`screenshots/03-cloudwatch-metrics.png`
+![CloudWatch Metrics](screenshots/03-cloudwatch-metrics.png)
 
 ---
 
@@ -106,7 +106,7 @@ Before starting, make sure you have:
 
 **Screenshot**
 
-`screenshots/04-grafana-dashboard.png`
+![Grafana Dashboard](screenshots/04-grafana-dashboard.png)
 
 ---
 
@@ -121,7 +121,7 @@ Create a Grafana-managed alert with the following configuration:
 
 **Screenshot**
 
-`screenshots/05-cpu-alert-rule.png`
+![CPU Alert Rule](screenshots/05-cpu-alert-rule.png)
 
 ---
 
@@ -129,7 +129,7 @@ Create a Grafana-managed alert with the following configuration:
 
 Generate CPU load on the EC2 instance.
 
-Amazon Linux
+### Amazon Linux
 
 ```bash
 sudo yum install stress -y
@@ -140,7 +140,7 @@ Verify that the alert status changes to **Firing**.
 
 **Screenshot**
 
-`screenshots/06-alert-firing.png`
+![Alert Firing](screenshots/06-alert-firing.png)
 
 ---
 
@@ -150,65 +150,65 @@ Once the alert enters the **Firing** state, Grafana sends an email notification 
 
 **Screenshot**
 
-`screenshots/07-email-notification.png`
+![Email Notification](screenshots/07-email-notification.png)
 
 ---
 
 # 📸 Project Screenshots
 
-### 1. EC2 Instance
+## 1. EC2 Instance
 
-*Launched an Amazon EC2 instance to serve as the infrastructure for monitoring.*
+Launched an Amazon EC2 instance to host the monitoring environment.
 
-`01-ec2-instance.png`
-
----
-
-### 2. IAM User
-
-*Created an IAM user with the required permissions to securely connect Grafana Cloud to AWS CloudWatch.*
-
-`02-iam-user.png`
+![EC2 Instance](screenshots/01-ec2-instance.png)
 
 ---
 
-### 3. CloudWatch Metrics
+## 2. IAM User
 
-*Verified that Amazon CloudWatch was collecting performance metrics for the EC2 instance.*
+Created an IAM user with CloudWatch and EC2 permissions for Grafana Cloud integration.
 
-`03-cloudwatch-metrics.png`
-
----
-
-### 4. Grafana Dashboard
-
-*Created a Grafana dashboard to visualize EC2 CPU utilization in real time.*
-
-`04-grafana-dashboard.png`
+![IAM User](screenshots/02-iam-user.png)
 
 ---
 
-### 5. CPU Alert Rule
+## 3. CloudWatch Metrics
 
-*Configured a Grafana alert rule to trigger when EC2 CPU utilization exceeded 80%.*
+Verified that Amazon CloudWatch was collecting EC2 performance metrics.
 
-`05-cpu-alert-rule.png`
-
----
-
-### 6. Alert Firing
-
-*Verified that the alert entered the **Firing** state after the CPU utilization crossed the configured threshold.*
-
-`06-alert-firing.png`
+![CloudWatch Metrics](screenshots/03-cloudwatch-metrics.png)
 
 ---
 
-### 7. Email Notification
+## 4. Grafana Dashboard
 
-*Received an email notification from Grafana confirming that the alert was successfully triggered.*
+Created a Grafana dashboard to visualize EC2 CPU utilization and other metrics.
 
-`07-email-notification.png`
+![Grafana Dashboard](screenshots/04-grafana-dashboard.png)
+
+---
+
+## 5. CPU Alert Rule
+
+Configured a Grafana-managed alert to trigger when CPU utilization exceeds 80%.
+
+![CPU Alert Rule](screenshots/05-cpu-alert-rule.png)
+
+---
+
+## 6. Alert Firing
+
+Verified that the alert entered the **Firing** state after the threshold was exceeded.
+
+![Alert Firing](screenshots/06-alert-firing.png)
+
+---
+
+## 7. Email Notification
+
+Received an email notification from Grafana confirming the alert was triggered successfully.
+
+![Email Notification](screenshots/07-email-notification.png)
 
 ---
 
@@ -247,4 +247,4 @@ This project demonstrates how to build a cloud monitoring and alerting solution 
 
 **Mohammed Mustafa Ali Khan**
 
-GitHub: https://github.com/MohammedMustafaAliKhan85
+GitHub: **https://github.com/MohammedMustafaAliKhan85**
